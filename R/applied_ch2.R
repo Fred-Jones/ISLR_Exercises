@@ -37,4 +37,14 @@ College$Names <- rownames(College)
 smarty_pants <- College[College$Elite=="Yes", "Names"]
 smarty_pants
 
+##Extra credit, predict room.board
+library(e1071)
+train <- College[1:(nrow(College)-nrow(College)/3),]
+test <- College[(nrow(train)+1):nrow(College),]
+nrow(test) + nrow(train) == nrow(College)
+
+svm.model <- svm(Room.Board~Private+PhD+Top10perc, data=train)
+svm.pred <- predict(svm.model, test)
+#pretty ok job
+cat("Error for U of Chicago $", (College[College$Names=="University of Chicago","Room.Board"] - svm.pred["University of Chicago"]))
 
