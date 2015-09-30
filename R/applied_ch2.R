@@ -23,7 +23,7 @@ summary(College)
 
 ##Use the pairs() fxn to produce a scatterplot matrix of the first ten columns
 pairs(College[,1:10])
-##Same, but more fun. Dynamic generation of formula
+##Same, but w/ generation of formula
 xnam <- paste0("College[,", 1:10,"]")
 fmla <- as.formula(paste("~", paste(xnam, collapse= "+")))
 pairs(fmla)
